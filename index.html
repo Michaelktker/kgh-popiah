@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kway Guan Huat Joo Chiat Popiah | Since 1938</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --warm-cream: #FDF8F3;
+            --deep-emerald: #1A3D2E;
+            --gold: #C9A962;
+            --gold-light: #E8D5A3;
+            --charcoal: #2D2D2D;
+            --soft-brown: #8B7355;
+            --paper-white: #F5F1EB;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--warm-cream);
+            color: var(--charcoal);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Noise texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--warm-cream) 0%, var(--paper-white) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 70%, rgba(201, 169, 98, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 30%, rgba(26, 61, 46, 0.05) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-2%, -2%) rotate(1deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeUp 1s ease-out;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .since {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--soft-brown);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 600;
+            color: var(--deep-emerald);
+            line-height: 1.1;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            font-style: italic;
+            color: var(--gold);
+            font-weight: 400;
+            margin-bottom: 40px;
+        }
+
+        .hero-divider {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 30px auto;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s ease-in-out infinite;
+            color: var(--soft-brown);
+            font-size: 2rem;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        /* Menu Section */
+        .menu-section {
+            padding: 80px 20px;
+            background-color: var(--paper-white);
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: 600;
+            color: var(--deep-emerald);
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            font-size: 0.9375rem;
+            color: var(--soft-brown);
+            font-style: italic;
+        }
+
+        .menu-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .menu-item {
+            background: var(--warm-cream);
+            padding: 30px 25px;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(201, 169, 98, 0.15);
+        }
+
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-light) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 10px 40px rgba(26, 61, 46, 0.1);
+            border-color: rgba(201, 169, 98, 0.3);
+        }
+
+        .menu-item:hover::before {
+            opacity: 1;
+        }
+
+        .item-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--deep-emerald);
+            margin-bottom: 8px;
+        }
+
+        .item-description {
+            font-size: 0.875rem;
+            color: var(--soft-brown);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .item-price {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: -0.02em;
+        }
+
+        .item-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--deep-emerald);
+            color: var(--warm-cream);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 20px;
+            text-align: center;
+            background: var(--deep-emerald);
+            color: var(--warm-cream);
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .footer-tagline {
+            font-size: 0.9375rem;
+            opacity: 0.8;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .footer-heritage {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.125rem;
+            color: var(--gold);
+            letter-spacing: 0.1em;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .menu-item {
+                padding: 25px 20px;
+            }
+
+            .item-name {
+                font-size: 1.375rem;
+            }
+
+            .item-price {
+                font-size: 1.375rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-content">
+            <span class="since">Est. 1938</span>
+            <h1>Kway Guan Huat</h1>
+            <p class="subtitle">Joo Chiat Popiah</p>
+            <div class="hero-divider"></div>
+            <p style="color: var(--charcoal); font-size: 1rem; max-width: 300px; margin: 0 auto; opacity: 0.8;">
+                Singapore's original popiah legacy
+            </p>
+        </div>
+        <div class="scroll-indicator">↓</div>
+    </header>
+
+    <section class="menu-section">
+        <div class="section-header">
+            <h2 class="section-title">Our Menu</h2>
+            <p class="section-subtitle">Hand-rolled with love, just like grandmother made</p>
+        </div>
+
+        <div class="menu-grid">
+            <div class="menu-item">
+                <h3 class="item-name">Original Popiah</h3>
+                <p class="item-description">Classic fresh spring roll with braised turnip, bean sprouts, lettuce, eggs, and crispy toppings</p>
+                <div class="item-price">$3.00</div>
+            </div>
+
+            <div class="menu-item">
+                <h3 class="item-name">Popiah Party Box</h3>
+                <p class="item-description">Perfect for gatherings. Includes popiah skins, fillings, and all the toppings you love</p>
+                <div class="item-price">$24.00</div>
+                <span class="item-badge">Popular</span>
+            </div>
+
+            <div class="menu-item">
+                <h3 class="item-name">Popiah Party Box <span style="font-size: 0.875rem; font-weight: 400; color: var(--soft-brown);">(Large)</span></h3>
+                <p class="item-description">Our signature party box in a larger size. Great for bigger celebrations and family feasts</p>
+                <div class="item-price">$30.00</div>
+                <span class="item-badge">Best Value</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">Kway Guan Huat</div>
+        <p class="footer-tagline">Heritage tastes better when shared</p>
+        <div class="footer-heritage">SINCE 1938</div>
+    </footer>
+</body>
+</html>
